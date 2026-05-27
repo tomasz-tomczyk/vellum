@@ -1,0 +1,173 @@
+---
+import "../styles/main.css";
+import { BaseLayout } from "@vellum/astro";
+
+const palette = [
+  { name: "Paper", hex: "#F6F4EE", bg: "#F6F4EE", hairline: true },
+  { name: "Warm white", hex: "#ECE9E2*", bg: "#ECE9E2", hairline: true },
+  { name: "Stone", hex: "#D9D6CC", bg: "#D9D6CC", hairline: false },
+  { name: "Warm gray", hex: "#ABA49A", bg: "#ABA49A", hairline: false },
+  { name: "Charcoal", hex: "#1F1F1F", bg: "#1F1F1F", hairline: false },
+  { name: "Accent", hex: "#E05A24", bg: "#E05A24", hairline: false },
+];
+---
+
+<BaseLayout title="About — vellum" currentPath={Astro.url.pathname}>
+  <main class="ml-[260px] px-12 py-10">
+    <!-- Hero block: portrait + name -->
+    <section class="grid grid-cols-12 gap-10 items-end mb-16 pl-2">
+      <div class="col-span-4">
+        <div class="aspect-[4/5] rounded-md overflow-hidden hairline relative">
+          <img src="https://picsum.photos/seed/studio-workspace-0/400/500" alt="" class="block w-full h-full object-cover" />
+          <span class="absolute bottom-3 left-3 panel-label" style="color: var(--color-paper);">portrait</span>
+        </div>
+      </div>
+      <div class="col-span-8">
+        <div class="panel-label mb-4">About the notebook</div>
+        <h1 class="font-display font-light text-4xl md:text-5xl lg:text-6xl leading-[1.02] tracking-[-0.018em] text-charcoal">
+          T. Tomczyk
+        </h1>
+        <p class="mt-4 font-display italic text-xl md:text-2xl leading-snug text-warm-gray max-w-[34rem]">
+          Writes here about designing things, slowly. Mostly software, sometimes paper.
+        </p>
+      </div>
+    </section>
+
+    <!-- Bio + side details -->
+    <section class="grid grid-cols-12 gap-10 mb-20 pl-2">
+      <div class="col-span-8">
+        <div class="prose-vellum">
+          <p class="dropcap">
+            I keep this notebook because I forget. I forget the books I have read, the
+            ideas I had on the train, the way a piece of software made me feel the first
+            time I opened it, the year I decided to stop using Slack on the weekends. I am
+            not, by temperament, an archivist. I write here so that future me — who is
+            forgetful and a little kinder than I am — has something to come back to.
+          </p>
+
+          <p>
+            By day I design and build software. The kind I care about most is small, slow,
+            and self-contained: utilities that earn their place on the keyboard rather than
+            the home screen. The argument for that kind of software does not need to be
+            made again here. <a href="/post">There's an essay</a> if you want it.
+          </p>
+
+          <p>
+            By night, and on Sundays, I read. Lately: Berger, Walser, Rilke, late
+            <em>Bulletin</em>s of the long-since-defunct Whole Earth catalog. I keep a paper
+            notebook because my screen has too many open tabs in it. I keep <em>this</em>
+            notebook because the paper one is not searchable.
+          </p>
+
+          <h3>What this place is</h3>
+          <p>
+            An archive of essays I write for myself, made public on the principle that
+            anything worth writing twice is worth writing once where someone might read it.
+            New entries appear when they appear, usually on Sundays, often shorter than
+            they should be. There is no algorithm here. There are no metrics. There is,
+            mercifully, no comment section.
+          </p>
+
+          <h3>What this place isn't</h3>
+          <p>
+            A newsletter, in the venture-capital sense. A funnel. A "platform." A side
+            project on the way to becoming a startup. I have nothing to sell you and no
+            aspirations to start. If that disappoints you, I'm sorry — but also, faintly,
+            glad.
+          </p>
+        </div>
+      </div>
+
+      <aside class="col-span-4 space-y-10 pt-1">
+        <div>
+          <h4 class="panel-label mb-3">Currently</h4>
+          <ul class="space-y-2 text-sm">
+            <li class="flex gap-3"><span class="font-mono text-xs text-warm-gray w-10 shrink-0 pt-0.5 uppercase">Work</span><span class="text-charcoal">A small CLI for marginal notes</span></li>
+            <li class="flex gap-3"><span class="font-mono text-xs text-warm-gray w-10 shrink-0 pt-0.5 uppercase">Read</span><span class="text-charcoal">Walks with Robert Walser · Berger's <em>Shape of a Pocket</em></span></li>
+            <li class="flex gap-3"><span class="font-mono text-xs text-warm-gray w-10 shrink-0 pt-0.5 uppercase">Hear</span><span class="text-charcoal">Arvo Pärt · Tabula Rasa, on repeat</span></li>
+            <li class="flex gap-3"><span class="font-mono text-xs text-warm-gray w-10 shrink-0 pt-0.5 uppercase">Place</span><span class="text-charcoal">Warsaw, mostly</span></li>
+            <li class="flex gap-3"><span class="font-mono text-xs text-warm-gray w-10 shrink-0 pt-0.5 uppercase">Mood</span><span class="text-charcoal">Tentatively hopeful</span></li>
+          </ul>
+          <p class="mt-3 text-xs font-mono text-warm-gray">Last updated May 21, 2026.</p>
+        </div>
+
+        <div>
+          <h4 class="panel-label mb-3">Elsewhere</h4>
+          <ul class="space-y-1.5 text-sm">
+            <li class="flex justify-between"><a href="#" class="text-charcoal hover:text-accent">Email</a><span class="font-mono text-xs text-warm-gray">me@tomasztomczyk.com</span></li>
+            <li class="flex justify-between"><a href="#" class="text-charcoal hover:text-accent">GitHub</a><span class="font-mono text-xs text-warm-gray">@tomekt</span></li>
+            <li class="flex justify-between"><a href="#" class="text-charcoal hover:text-accent">Mastodon</a><span class="font-mono text-xs text-warm-gray">@t@hachyderm</span></li>
+            <li class="flex justify-between"><a href="#" class="text-charcoal hover:text-accent">RSS</a><span class="font-mono text-xs text-warm-gray">/feed.xml</span></li>
+          </ul>
+        </div>
+
+        <div class="card p-4">
+          <h4 class="panel-label mb-2">Letters</h4>
+          <p class="text-xs text-charcoal mb-3 leading-relaxed">
+            One short letter on the last Sunday of each month. Easy in, easy out.
+          </p>
+          <form class="flex gap-2">
+            <input type="email" placeholder="you@elsewhere.com" aria-label="Email" class="flex-1 h-8 px-2.5 rounded-md hairline bg-paper text-xs placeholder-warm-gray focus:outline-none focus:shadow-[var(--shadow-focus)]" />
+            <button class="btn btn-primary" style="height:2rem;padding:0 0.875rem;font-size:12px">Sign up</button>
+          </form>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Colophon -->
+    <section class="mb-20 pl-2 pt-10 border-t border-warm-white">
+      <h3 class="font-display text-2xl mb-6 text-charcoal">Colophon</h3>
+      <div class="grid grid-cols-12 gap-8">
+        <dl class="col-span-8 grid grid-cols-2 gap-x-8 gap-y-4 text-sm">
+          <div>
+            <dt class="panel-label mb-1">Typography</dt>
+            <dd class="text-charcoal">Crimson Pro · Inter · IBM Plex Mono</dd>
+          </div>
+          <div>
+            <dt class="panel-label mb-1">Palette</dt>
+            <dd class="text-charcoal">Six colors. Paper. Warm white. Stone. Warm gray. Charcoal. Accent.</dd>
+          </div>
+          <div>
+            <dt class="panel-label mb-1">Built with</dt>
+            <dd class="text-charcoal">Tailwind v4 · Astro · static HTML</dd>
+          </div>
+          <div>
+            <dt class="panel-label mb-1">Hosted</dt>
+            <dd class="text-charcoal">Somewhere quiet. Updated by hand.</dd>
+          </div>
+          <div>
+            <dt class="panel-label mb-1">License</dt>
+            <dd class="text-charcoal">CC BY-NC 4.0 · words are mine, ideas are everyone's</dd>
+          </div>
+          <div>
+            <dt class="panel-label mb-1">Privacy</dt>
+            <dd class="text-charcoal">No analytics. No cookies. No tracking. No newsletter pop-ups.</dd>
+          </div>
+        </dl>
+
+        <div class="col-span-4">
+          <h4 class="panel-label mb-3">The six</h4>
+          <ul class="space-y-1.5">
+            {palette.map((c) => (
+              <li class="flex items-center gap-3 text-xs">
+                <span class={`size-4 rounded-full ${c.hairline ? "hairline" : ""}`} style={`background:${c.bg}`}></span>
+                <span class="text-charcoal flex-1">{c.name}</span>
+                <span class="font-mono text-xs text-warm-gray">{c.hex}</span>
+              </li>
+            ))}
+          </ul>
+          <p class="mt-3 text-xs font-mono text-warm-gray">* warm-white pending confirmation</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="mt-10 mb-4 pl-2 pt-6 border-t border-warm-white flex items-center justify-between text-xs font-mono text-warm-gray">
+      <span>© 2026 · vellum · maintained in Warsaw</span>
+      <div class="flex gap-4">
+        <a href="#" class="hover:text-charcoal">RSS</a>
+        <a href="#" class="hover:text-charcoal">Email</a>
+        <a href="/system" class="hover:text-charcoal">Colophon</a>
+      </div>
+    </footer>
+  </main>
+</BaseLayout>

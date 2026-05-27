@@ -1,0 +1,16 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Props = {
+  variant?: "default" | "mono";
+  class?: string;
+} & HTMLAttributes<"span">;
+
+const { variant = "default", class: className, ...rest } = Astro.props as Props;
+const base = variant === "mono" ? "badge-mono" : "badge";
+const classes = [base, className].filter(Boolean).join(" ");
+---
+
+<span class={classes} {...rest}>
+  <slot />
+</span>

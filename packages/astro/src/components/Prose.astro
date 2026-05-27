@@ -1,0 +1,17 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Props = {
+  dropcap?: boolean;
+  class?: string;
+} & HTMLAttributes<"article">;
+
+const { dropcap = false, class: className, ...rest } = Astro.props as Props;
+const classes = ["prose-vellum", dropcap ? "dropcap" : "", className]
+  .filter(Boolean)
+  .join(" ");
+---
+
+<article class={classes} {...rest}>
+  <slot />
+</article>

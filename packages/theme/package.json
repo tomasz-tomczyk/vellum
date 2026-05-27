@@ -1,0 +1,41 @@
+{
+  "name": "@vellum/theme",
+  "version": "0.1.0",
+  "description": "Editorial, paper-bound Tailwind v4 design-system theme. CSS-only, drop-in.",
+  "type": "module",
+  "main": "./vellum.css",
+  "style": "./vellum.css",
+  "exports": {
+    ".": "./vellum.css",
+    "./vellum.css": "./vellum.css"
+  },
+  "files": [
+    "vellum.css",
+    "README.md"
+  ],
+  "keywords": [
+    "tailwind",
+    "tailwindcss",
+    "tailwindcss-v4",
+    "theme",
+    "design-system",
+    "editorial",
+    "css",
+    "vellum"
+  ],
+  "author": "Tomasz Tomczyk",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomasz-tomczyk/vellum.git",
+    "directory": "packages/theme"
+  },
+  "homepage": "https://github.com/tomasz-tomczyk/vellum#readme",
+  "bugs": "https://github.com/tomasz-tomczyk/vellum/issues",
+  "peerDependencies": {
+    "tailwindcss": "^4.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

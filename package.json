@@ -1,0 +1,20 @@
+{
+  "name": "vellum",
+  "version": "0.0.0",
+  "private": true,
+  "description": "An editorial, paper-bound design system. Tailwind v4 CSS-only + Astro components.",
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "bun --filter=demo run dev",
+    "build": "bun --filter=demo run build",
+    "preview": "bun --filter=demo run preview"
+  },
+  "packageManager": "bun@1.1.0",
+  "engines": {
+    "node": ">=20"
+  }
+}

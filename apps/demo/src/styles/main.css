@@ -1,0 +1,7 @@
+@import "tailwindcss";
+@import "@vellum/theme";
+
+@source "../../../../packages/astro/src/**/*.{astro,ts}";
+@source "../pages/**/*.{astro,md,mdx}";
+@source "../layouts/**/*.astro";
+@source "../components/**/*.astro";

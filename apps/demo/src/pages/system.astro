@@ -1,0 +1,265 @@
+---
+import "../styles/main.css";
+import { BaseLayout } from "@vellum/astro";
+
+const cal = [
+  { d: "28", cls: "opacity-30" }, { d: "29", cls: "opacity-30" }, { d: "30", cls: "opacity-30" },
+  { d: "1" }, { d: "2" }, { d: "3" }, { d: "4" },
+  { d: "5" }, { d: "6" }, { d: "7" }, { d: "8" }, { d: "9" }, { d: "10" }, { d: "11" },
+  { d: "12" }, { d: "13" }, { d: "14" }, { d: "15" }, { d: "16" },
+  { d: "17", cls: "rounded-full bg-accent text-paper font-medium" },
+  { d: "18" }, { d: "19" }, { d: "20" },
+  { d: "21", cls: "rounded-full hairline" },
+  { d: "22" }, { d: "23" }, { d: "24" },
+];
+
+const recentCards = [
+  { date: "May 18", title: "On forgiving margins", seed: "writing-journal-1" },
+  { date: "May 14", title: "Building a second brain with Markdown", seed: "library-book-2" },
+  { date: "May 09", title: "An ill-formed reckoning, literally", seed: "typewriter-paper-3" },
+];
+
+const tonesSeeds = ["paper-4", "paper-5", "paper-6", "paper-7"];
+
+const earthPalette = ["#E05A24", "#ABA49A", "#1F1F1F", "#D9D6CC", "#ABA49A", "#1F1F1F"];
+---
+
+<BaseLayout title="vellum — design system" currentPath={Astro.url.pathname}>
+  <main class="ml-[260px] px-12 py-10">
+    <!-- top breadcrumb / nav -->
+    <header class="flex items-center justify-between mb-6 pl-2">
+      <div class="flex items-center gap-3">
+        <span class="panel-label">vellum / themes /</span>
+        <span class="text-charcoal font-medium text-sm">Light · Editorial</span>
+      </div>
+      <div class="flex items-center gap-2 text-xs text-warm-gray">
+        <span>v0.0.1</span>
+        <span class="size-1 rounded-full bg-stone"></span>
+        <span>last edited <em class="not-italic text-charcoal">just now</em></span>
+      </div>
+    </header>
+
+    <div class="grid grid-cols-12 gap-4 auto-rows-[minmax(0,auto)]">
+      <!-- HERO -->
+      <section class="col-span-7 card p-6 flex gap-6 items-stretch min-h-[220px]">
+        <div class="flex-1 flex flex-col justify-between">
+          <span class="panel-label">No. 01 — Pillar</span>
+          <h1 class="font-display font-light text-3xl md:text-4xl leading-[1.05] text-charcoal mt-3">
+            A thoughtfully<br />maintained personal<br />notebook.
+          </h1>
+          <div class="flex items-center gap-3 mt-4">
+            <button class="px-4 h-9 rounded-full bg-charcoal text-warm-white text-xs font-medium tracking-tight hover:bg-charcoal transition">Begin writing</button>
+            <button class="btn btn-secondary">Browse archive</button>
+          </div>
+        </div>
+        <div class="w-[44%] rounded-md overflow-hidden hairline relative">
+          <img src="https://picsum.photos/seed/desk-notebook-0/880/495" alt="" class="block w-full h-full object-cover" />
+          <span class="absolute top-2 right-2 panel-label text-stone/80">photo</span>
+        </div>
+      </section>
+
+      <!-- Color theory -->
+      <section class="col-span-3 card p-5">
+        <div class="flex items-center justify-between mb-4">
+          <span class="panel-label">Color theory</span>
+          <span class="text-xs text-warm-gray font-mono">07 ↕</span>
+        </div>
+        <div class="grid grid-cols-5 gap-2">
+          <div class="aspect-square rounded-full" style="background:#F6F4EE; box-shadow: inset 0 0 0 1px #D9D6CC;" title="paper #F6F4EE"></div>
+          <div class="aspect-square rounded-full" style="background:#ECE9E2; box-shadow: inset 0 0 0 1px #D9D6CC;" title="warm-white #ECE9E2"></div>
+          <div class="aspect-square rounded-full" style="background:#D9D6CC;" title="stone #D9D6CC"></div>
+          <div class="aspect-square rounded-full" style="background:#ABA49A;" title="warm-gray #ABA49A"></div>
+          <div class="aspect-square rounded-full" style="background:#E05A24;" title="accent #E05A24"></div>
+        </div>
+        <ul class="mt-4 space-y-1.5 text-xs text-warm-gray font-mono">
+          <li class="flex justify-between"><span>paper</span><span>#F6F4EE</span></li>
+          <li class="flex justify-between"><span>warm white</span><span>#ECE9E2</span></li>
+          <li class="flex justify-between"><span>stone</span><span>#D9D6CC</span></li>
+          <li class="flex justify-between"><span>warm gray</span><span>#ABA49A</span></li>
+          <li class="flex justify-between"><span>accent</span><span>#E05A24</span></li>
+        </ul>
+      </section>
+
+      <!-- Typography -->
+      <section class="col-span-2 card p-5 flex flex-col">
+        <span class="panel-label mb-3">Typography</span>
+        <div class="flex-1 grid grid-rows-[auto_1fr_auto]">
+          <div class="text-xs text-warm-gray font-mono mb-1">Crimson Pro</div>
+          <div class="font-display text-6xl md:text-7xl lg:text-8xl leading-[0.9] text-charcoal tracking-[-0.02em]">Aa</div>
+          <div class="mt-2 flex items-end justify-between gap-2">
+            <div class="font-mono text-lg text-accent tracking-tight">Mono.</div>
+            <div class="font-sans text-lg font-semibold text-charcoal tracking-tight">Inter</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recent Notes -->
+      <section class="col-span-7 card p-5">
+        <div class="flex items-baseline justify-between mb-4">
+          <span class="panel-label">Recent notes</span>
+          <a class="text-xs text-accent hover:text-charcoal" href="#">view all →</a>
+        </div>
+        <div class="grid grid-cols-3 gap-3">
+          {recentCards.map((c) => (
+            <article class="rounded-md overflow-hidden hairline bg-paper">
+              <div class="aspect-[4/3]">
+                <img src={`https://picsum.photos/seed/${c.seed}/400/300`} alt="" class="block w-full h-full object-cover" />
+              </div>
+              <div class="p-3">
+                <div class="text-xs text-warm-gray font-mono uppercase tracking-wider">{c.date}</div>
+                <h4 class="font-display text-base leading-tight mt-1.5">{c.title}</h4>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- UI Components -->
+      <section class="col-span-5 card p-5">
+        <div class="flex items-center justify-between mb-4">
+          <span class="panel-label">UI Components</span>
+          <span class="text-xs text-warm-gray font-mono">12 →</span>
+        </div>
+
+        <div class="space-y-3">
+          <label class="block">
+            <span class="text-xs text-warm-gray font-medium">Title</span>
+            <input class="mt-1 w-full h-9 px-3 rounded-md hairline bg-paper text-sm text-charcoal placeholder-warm-gray focus:outline-none focus:shadow-[var(--shadow-focus)]"
+              placeholder="An untitled entry" value="On Designing Calm Interfaces" />
+          </label>
+          <label class="block">
+            <span class="text-xs text-warm-gray font-medium">Collection</span>
+            <div class="mt-1 w-full h-9 px-3 rounded-md hairline bg-paper flex items-center justify-between text-sm text-charcoal">
+              Field Notebook · 2026
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+          </label>
+
+          <div class="flex flex-col items-start gap-3 pt-1">
+            <button class="btn btn-primary">Primary Action <span aria-hidden="true">→</span></button>
+            <button class="btn btn-secondary">Secondary</button>
+            <a href="#" class="btn-link">Tertiary link <span aria-hidden="true">→</span></a>
+          </div>
+
+          <div class="flex flex-wrap gap-1.5 pt-2 border-t border-warm-white">
+            <span class="badge">Editorial</span>
+            <span class="badge">Daily notes</span>
+            <span class="badge">Slow reading</span>
+            <span class="badge bg-accent text-paper">Featured</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tones & Themes -->
+      <section class="col-span-5 card p-5">
+        <div class="flex items-center justify-between mb-3">
+          <span class="panel-label">Tones &amp; Themes</span>
+          <span class="text-xs text-warm-gray font-mono">earth · paper · ink</span>
+        </div>
+        <div class="grid grid-cols-4 gap-2">
+          {tonesSeeds.map((s) => (
+            <div class="aspect-[3/4] rounded-md overflow-hidden">
+              <img src={`https://picsum.photos/seed/${s}/600/800`} alt="" class="block w-full h-full object-cover" />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Schedule (calendar) -->
+      <section class="col-span-3 card p-5">
+        <div class="flex items-center justify-between mb-3">
+          <span class="panel-label">Schedule</span>
+          <span class="text-xs text-warm-gray font-mono">May</span>
+        </div>
+        <div class="grid grid-cols-7 gap-1 text-xs text-center text-warm-gray font-mono">
+          <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+        </div>
+        <div class="grid grid-cols-7 gap-1 mt-1 text-xs text-center text-charcoal">
+          {cal.map((d) => (
+            <span class={`aspect-square grid place-items-center ${d.cls ?? ""}`}>{d.d}</span>
+          ))}
+        </div>
+      </section>
+
+      <!-- Quick filters -->
+      <section class="col-span-4 card p-5">
+        <div class="flex items-center justify-between mb-3">
+          <span class="panel-label">Quick filters</span>
+        </div>
+        <div class="flex flex-wrap gap-1.5">
+          <button class="badge">All</button>
+          <button class="px-2.5 h-7 rounded-full text-xs bg-charcoal text-warm-white">Drafts</button>
+          <button class="badge">Published</button>
+          <button class="badge">Archived</button>
+          <button class="badge">Pinned</button>
+        </div>
+        <div class="grid grid-cols-3 gap-3 mt-4">
+          <div class="rounded-md hairline p-3 bg-paper">
+            <div class="font-display text-2xl leading-none text-charcoal">142</div>
+            <div class="text-xs text-warm-gray mt-1">Entries</div>
+          </div>
+          <div class="rounded-md hairline p-3 bg-paper">
+            <div class="font-display text-2xl leading-none text-accent">19</div>
+            <div class="text-xs text-warm-gray mt-1">This month</div>
+          </div>
+          <div class="rounded-md hairline p-3 bg-paper">
+            <div class="font-display text-2xl leading-none text-charcoal">6</div>
+            <div class="text-xs text-warm-gray mt-1">Collections</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Code block -->
+      <section class="col-span-5 rounded-lg overflow-hidden" style="background:#1F1F1F;border:1px solid #1F1F1F;">
+        <div class="flex items-center justify-between px-4 py-2 border-b border-warm-gray/20">
+          <div class="flex items-center gap-1.5">
+            <span class="size-2.5 rounded-full" style="background:#E05A24"></span>
+            <span class="size-2.5 rounded-full" style="background:#ABA49A"></span>
+            <span class="size-2.5 rounded-full" style="background:#D9D6CC"></span>
+          </div>
+          <span class="font-mono text-xs text-warm-gray">theme.config.css</span>
+        </div>
+<pre class="font-mono text-xs leading-[1.7] px-4 py-3 text-stone overflow-x-auto"><span style="color:#ABA49A">/* paper · ink · clay */</span>
+<span style="color:#E05A24">@theme</span> &lbrace;
+  <span style="color:#ABA49A">--color-paper</span>:      <span style="color:#E05A24">#F6F4EE</span>;
+  <span style="color:#ABA49A">--color-charcoal</span>:   <span style="color:#E05A24">#1F1F1F</span>;
+  <span style="color:#ABA49A">--color-accent</span>:     <span style="color:#E05A24">#E05A24</span>;
+  <span style="color:#ABA49A">--font-display</span>:     <span style="color:#E05A24">"Crimson Pro"</span>;
+  <span style="color:#ABA49A">--font-sans</span>:        <span style="color:#E05A24">"Inter"</span>;
+&rbrace;</pre>
+      </section>
+
+      <!-- Pull quote -->
+      <section class="col-span-4 rounded-lg p-6 flex flex-col justify-between" style="background:#1F1F1F;color:#D9D6CC;">
+        <svg width="28" height="22" viewBox="0 0 24 22" fill="#E05A24" aria-hidden="true">
+          <path d="M0 22V12C0 5.4 3.5 1 9 0v4C6 5 4.5 7.5 4.5 11H9v11H0Zm15 0V12c0-6.6 3.5-11 9-12v4c-3 1-4.5 3.5-4.5 7H24v11h-9Z"/>
+        </svg>
+        <blockquote class="font-display text-xl md:text-2xl leading-[1.2] mt-4">
+          A quiet place for meaningful work.
+        </blockquote>
+        <footer class="mt-4 font-mono text-xs uppercase tracking-[0.12em] text-warm-gray">— Vellum, on intent</footer>
+      </section>
+
+      <!-- Secondary palette circles -->
+      <section class="col-span-3 card p-5">
+        <div class="flex items-center justify-between mb-3">
+          <span class="panel-label">Palette · Earth</span>
+          <span class="text-xs text-warm-gray font-mono">06</span>
+        </div>
+        <div class="grid grid-cols-3 gap-3">
+          {earthPalette.map((c) => (
+            <div>
+              <div class="aspect-square rounded-full mb-1.5" style={`background:${c}`}></div>
+              <div class="text-xs font-mono text-warm-gray">{c}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
+
+    <footer class="mt-8 mb-2 flex items-center justify-between text-xs text-warm-gray font-mono">
+      <span>vellum / themes / light · editorial</span>
+      <span>Crimson Pro · Inter · IBM Plex Mono</span>
+    </footer>
+  </main>
+</BaseLayout>

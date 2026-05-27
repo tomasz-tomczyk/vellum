@@ -1,0 +1,15 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Props = {
+  class?: string;
+  as?: string;
+} & HTMLAttributes<"div">;
+
+const { class: className, as: Tag = "div", ...rest } = Astro.props as Props;
+const classes = ["card", className].filter(Boolean).join(" ");
+---
+
+<Tag class={classes} {...rest}>
+  <slot />
+</Tag>

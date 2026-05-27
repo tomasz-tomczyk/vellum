@@ -1,0 +1,45 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Variant = "primary" | "secondary" | "link";
+
+type Props = {
+  variant?: Variant;
+  as?: "button" | "a";
+  href?: string;
+  type?: "button" | "submit" | "reset";
+  class?: string;
+} & (HTMLAttributes<"button"> | HTMLAttributes<"a">);
+
+const {
+  variant = "primary",
+  as,
+  href,
+  type,
+  class: className,
+  ...rest
+} = Astro.props as Props;
+
+const Tag = as ?? (href ? "a" : "button");
+
+const variantClass =
+  variant === "link"
+    ? "btn-link"
+    : variant === "secondary"
+      ? "btn btn-secondary"
+      : "btn btn-primary";
+
+const classes = [variantClass, className].filter(Boolean).join(" ");
+---
+
+{
+  Tag === "a" ? (
+    <a class={classes} href={href} {...(rest as HTMLAttributes<"a">)}>
+      <slot />
+    </a>
+  ) : (
+    <button class={classes} type={type ?? "button"} {...(rest as HTMLAttributes<"button">)}>
+      <slot />
+    </button>
+  )
+}

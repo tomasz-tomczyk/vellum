@@ -1,0 +1,258 @@
+---
+import "../styles/main.css";
+import { BaseLayout } from "@vellum/astro";
+
+const toc = [
+  { id: "s1", n: "1.", text: "Clarity over cleverness" },
+  { id: "s2", n: "2.", text: "Restraint in visual design" },
+  { id: "s3", n: "3.", text: "Focus on content" },
+  { id: "s4", n: "4.", text: "Subtle interactions" },
+  { id: "s5", n: "5.", text: "Iterate with intention" },
+];
+---
+
+<BaseLayout
+  title="On designing calm interfaces — vellum"
+  description="Thoughts on creating digital spaces that feel natural, quiet, and unobtrusive."
+  currentPath={Astro.url.pathname}
+>
+  <!-- Right rail (TOC + actions + metadata + related) -->
+  <aside
+    class="fixed top-20 bottom-0 right-0 w-[300px] overflow-y-auto pl-8 pr-8 pt-6 pb-12 hidden xl:block border-l border-warm-white"
+  >
+    <section>
+      <h3 class="text-lg text-charcoal mb-3">On this page</h3>
+      <ol class="border-l border-warm-white text-sm">
+        {toc.map((t, i) => (
+          <li>
+            <a
+              href={`#${t.id}`}
+              class={
+                i === 0
+                  ? "block -ml-px border-l-2 border-accent pl-4 py-1.5 text-accent"
+                  : "block pl-4 py-1.5 text-charcoal hover:text-accent"
+              }
+            >
+              {t.n} {t.text}
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <hr class="my-6 border-warm-white" />
+
+    <section>
+      <h3 class="text-lg text-charcoal mb-3">Quick actions</h3>
+      <ul class="space-y-3 text-sm">
+        <li>
+          <a href="#" class="flex items-center gap-3 text-charcoal hover:text-accent">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="opacity-70"><path d="M7 3h10v18l-5-3-5 3z"/></svg>
+            Add to Reading List
+          </a>
+        </li>
+        <li>
+          <a href="#" class="flex items-center gap-3 text-charcoal hover:text-accent">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="opacity-70"><path d="M10 14a4 4 0 0 0 4 0l3-3a4 4 0 1 0-5.6-5.6L9.8 7m-1.4 3-3 3a4 4 0 1 0 5.6 5.6l1.6-1.6"/></svg>
+            Copy link to note
+          </a>
+        </li>
+        <li>
+          <a href="#" class="flex items-center gap-3 text-charcoal hover:text-accent">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="opacity-70"><path d="M5 3h11l3 3v15H5z"/><path d="M16 3v3h3"/><path d="M8 13l3 3 5-5"/></svg>
+            Export as Markdown
+          </a>
+        </li>
+        <li>
+          <a href="#" class="flex items-center gap-3 text-charcoal hover:text-accent">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="opacity-70"><path d="M6 9V3h12v6"/><rect x="4" y="9" width="16" height="9" rx="1"/><path d="M7 14h10v7H7z"/></svg>
+            Print this note
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <hr class="my-6 border-warm-white" />
+
+    <section>
+      <h3 class="text-lg text-charcoal mb-3">Metadata</h3>
+      <ul class="space-y-2 text-sm">
+        <li class="flex items-center gap-3 text-charcoal">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="opacity-70"><rect x="3" y="5" width="18" height="16" rx="1.5"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>
+          May 17, 2026
+        </li>
+        <li class="flex items-center gap-3 text-charcoal">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="opacity-70"><circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/></svg>
+          8 min read
+        </li>
+        <li class="flex items-center gap-3 text-charcoal">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="opacity-70"><path d="M3 7a1 1 0 0 1 1-1h5l2 2h8a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/></svg>
+          Notes
+        </li>
+        <li class="flex items-center gap-3 text-charcoal">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="opacity-70"><path d="M3 7a1 1 0 0 1 1-1h5l2 2h8a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/></svg>
+          Design
+        </li>
+        <li class="flex items-center gap-3 text-charcoal">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="opacity-70"><path d="M20 11 11 2H4v7l9 9z"/><circle cx="7.5" cy="7.5" r=".9" fill="currentColor"/></svg>
+          #design  #interfaces
+        </li>
+      </ul>
+    </section>
+
+    <hr class="my-6 border-warm-white" />
+
+    <section>
+      <h3 class="text-lg text-charcoal mb-3">Related notes</h3>
+      <ul class="space-y-4">
+        {[
+          { seed: "related-1", title: "Building a Second Brain with Markdown", date: "May 11, 2026" },
+          { seed: "related-2", title: "macOS Keyboard Shortcuts I Actually Use", date: "May 2, 2026" },
+          { seed: "related-3", title: "The Notes App I Wish Existed", date: "Apr 24, 2026" },
+        ].map((r) => (
+          <li>
+            <a href="#" class="flex gap-3 items-start group">
+              <div class="size-12 rounded-md overflow-hidden hairline shrink-0">
+                <img src={`https://picsum.photos/seed/${r.seed}/96/96`} alt="" class="w-full h-full object-cover" />
+              </div>
+              <div class="min-w-0">
+                <div class="font-display text-sm leading-tight text-charcoal group-hover:text-accent">{r.title}</div>
+                <div class="text-xs text-charcoal opacity-50 mt-1 font-mono">{r.date}</div>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </aside>
+
+  <main class="ml-[260px] xl:mr-[300px] px-12 py-10">
+    <article>
+      <!-- Breadcrumb -->
+      <div class="text-sm mb-6">
+        <a href="/" class="text-accent hover:text-charcoal">Notes</a>
+        <span class="mx-1 text-charcoal opacity-50">/</span>
+        <a href="#" class="text-accent hover:text-charcoal">Design</a>
+      </div>
+
+      <h1 class="font-display font-normal text-4xl md:text-5xl lg:text-6xl leading-[1.04] text-charcoal">
+        On Designing Calm Interfaces
+      </h1>
+
+      <p class="mt-4 text-base leading-relaxed text-charcoal max-w-[36rem]">
+        Thoughts on creating digital spaces that feel natural,<br />quiet, and unobtrusive.
+      </p>
+
+      <hr class="my-8 border-warm-white" />
+
+      <div class="prose-vellum">
+        <p class="dropcap">
+          The best interfaces don't call attention to themselves. They fade into the
+          background, quietly supporting the work that matters. Like a <em>well-designed</em>
+          notebook, they get out of the way at the right moments and offer
+          <em>just enough</em> structure when you need it.
+        </p>
+
+        <p>Here are a few principles that guide my approach.</p>
+
+        <h2 id="s1">1. Clarity over cleverness</h2>
+        <p>
+          Interfaces should be obvious without being oversimplified. <em>Clarity</em> comes
+          from <code>intentional hierarchy</code>, thoughtful spacing, and consistent patterns.
+        </p>
+        <blockquote>
+          Make it as simple as possible, but not simpler.
+          <footer style="margin-top:0.6em;font-family:var(--font-mono);font-size:0.65em;font-style:normal;letter-spacing:0.04em;color:var(--color-charcoal);opacity:0.7;">— Albert Einstein</footer>
+        </blockquote>
+
+        <h2 id="s2">2. Restraint in visual design</h2>
+        <p>
+          A limited palette, readable type, and generous whitespace help create a sense of
+          calm. Restraint isn't about doing less — it's about doing <a href="#">what matters</a>.
+        </p>
+        <ul>
+          <li>Use color intentionally</li>
+          <li>Limit choices to reduce cognitive load</li>
+          <li>Design for <code>scanning</code>, not just reading</li>
+        </ul>
+
+        <h2 id="s3">3. Focus on content</h2>
+        <p>
+          Content is the reason the interface exists. Everything else is in service of it.
+          Good interfaces <em>respect</em> the writer and the reader.
+        </p>
+      </div>
+
+      <!-- Inline code block — wider than prose-vellum -->
+      <div class="my-7 max-w-[42rem] rounded-lg overflow-hidden bg-warm-white">
+        <div class="flex items-center justify-between px-4 py-2 border-b border-stone/40">
+          <div class="flex items-center gap-2 font-mono text-xs text-charcoal opacity-70">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h11l3 3v13H5z"/><path d="M16 4v3h3"/></svg>
+            Example: Markdown in practice
+          </div>
+          <div class="flex items-center gap-3 font-mono text-xs text-charcoal opacity-60">
+            <span>js</span>
+            <button aria-label="Copy code" class="hover:opacity-100"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="9" y="9" width="11" height="11" rx="1.5"/><path d="M5 15V5a1 1 0 0 1 1-1h10"/></svg></button>
+          </div>
+        </div>
+<pre class="font-mono text-sm leading-[1.7] px-4 py-3 text-charcoal overflow-x-auto"><span class="opacity-40 select-none mr-3">1</span><span class="text-accent">function</span> <span class="text-charcoal">writeNote</span>(note) &lbrace;
+<span class="opacity-40 select-none mr-3">2</span>  <span class="text-accent">const</span> entry = &lbrace;
+<span class="opacity-40 select-none mr-3">3</span>    id: <span class="text-charcoal">Date</span>.<span class="opacity-70">now</span>(),
+<span class="opacity-40 select-none mr-3">4</span>    content: note,
+<span class="opacity-40 select-none mr-3">5</span>    created: <span class="text-accent">new</span> <span class="text-charcoal">Date</span>(),
+<span class="opacity-40 select-none mr-3">6</span>  &rbrace;;
+<span class="opacity-40 select-none mr-3">7</span>  <span class="opacity-70">save</span>(entry);
+<span class="opacity-40 select-none mr-3">8</span>&rbrace;</pre>
+      </div>
+
+      <div class="prose-vellum">
+        <p>Inline code looks like <code>this</code>, or <code>that()</code>.</p>
+
+        <h2 id="s4">4. Subtle interactions</h2>
+        <p>
+          Hover states, focus rings, and transitions should clarify — not perform. The best
+          interactions are the ones you don't notice unless you're looking for them.
+        </p>
+
+        <h2 id="s5">5. Iterate with intention</h2>
+        <p>
+          Design is iterative, but iteration without intent is just noise. Each change
+          should answer a question; each change should be measurable against something you
+          care about.
+        </p>
+
+        <hr />
+
+        <p>
+          None of this is new. I write it down because I keep forgetting. If you've made it
+          this far — thank you. There is more in <a href="#">the archive</a>, or you can
+          follow along by <a href="#">RSS</a>.
+        </p>
+      </div>
+
+      <div class="mt-12 pt-6 border-t border-warm-white max-w-[42rem] flex items-center justify-between text-xs font-mono text-charcoal opacity-60">
+        <span>— Warsaw, May 17, 2026</span>
+        <span>Filed under <a href="#" class="text-accent hover:text-charcoal">design</a> · <a href="#" class="text-accent hover:text-charcoal">interfaces</a></span>
+      </div>
+    </article>
+
+    <nav class="mt-14 flex justify-between gap-8 max-w-[42rem] pt-6 border-t border-warm-white">
+      <a href="#" class="group">
+        <span class="panel-label block mb-1">← Previous</span>
+        <span class="font-display italic text-lg text-charcoal group-hover:text-accent leading-snug">On forgiving margins.</span>
+      </a>
+      <a href="#" class="group text-right">
+        <span class="panel-label block mb-1">Next →</span>
+        <span class="font-display italic text-lg text-charcoal group-hover:text-accent leading-snug">A short letter on small tools.</span>
+      </a>
+    </nav>
+
+    <footer class="mt-20 mb-4 pt-6 border-t border-warm-white flex items-center justify-between text-xs font-mono text-charcoal opacity-60 max-w-[42rem]">
+      <span>© 2026 · vellum</span>
+      <div class="flex gap-4">
+        <a href="#" class="hover:text-charcoal">RSS</a>
+        <a href="#" class="hover:text-charcoal">Email</a>
+      </div>
+    </footer>
+  </main>
+</BaseLayout>

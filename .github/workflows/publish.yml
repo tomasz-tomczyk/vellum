@@ -1,0 +1,45 @@
+name: Publish to npm
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      package:
+        description: "Which package to publish"
+        required: true
+        type: choice
+        options:
+          - theme
+          - astro
+          - both
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  publish-theme:
+    if: github.event_name == 'release' || github.event.inputs.package == 'theme' || github.event.inputs.package == 'both'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+      - working-directory: packages/theme
+        run: npm publish --provenance --access public
+
+  publish-astro:
+    if: github.event_name == 'release' || github.event.inputs.package == 'astro' || github.event.inputs.package == 'both'
+    needs: publish-theme
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+      - working-directory: packages/astro
+        run: npm publish --provenance --access public

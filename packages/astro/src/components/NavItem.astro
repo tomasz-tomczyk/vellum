@@ -1,0 +1,30 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Props = {
+  href: string;
+  active?: boolean;
+  class?: string;
+} & HTMLAttributes<"a">;
+
+const { href, active = false, class: className, ...rest } = Astro.props as Props;
+
+const classes = [
+  "nav-item",
+  active ? "font-medium" : "",
+  className,
+]
+  .filter(Boolean)
+  .join(" ");
+---
+
+<a
+  href={href}
+  class={classes}
+  aria-current={active ? "page" : undefined}
+  {...rest}
+>
+  <slot name="icon" />
+  <slot />
+  {active && <span class="ml-auto size-1.5 rounded-full bg-accent" aria-hidden="true" />}
+</a>

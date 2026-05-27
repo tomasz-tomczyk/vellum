@@ -1,0 +1,12 @@
+node_modules
+dist
+.astro
+.cache
+.DS_Store
+*.log
+.env
+.env.local
+.legacy-html
+.backup
+bun.lock
+package-lock.json
