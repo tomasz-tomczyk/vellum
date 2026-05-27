@@ -23,7 +23,7 @@ jobs:
         with:
           bun-version: latest
       - run: bun install --frozen-lockfile
-      - run: bun --filter=demo build
+      - run: bun --filter=demo run build
         env:
           NODE_ENV: production
       - uses: actions/upload-pages-artifact@v3
